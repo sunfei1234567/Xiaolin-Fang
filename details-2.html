@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Culture Harmony Guidebook - Xiaolin Fang Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* ================= Variables & Global Settings ================= */
+        :root {
+            --dark-green: #a2a08b;
+            --mid-green: #ad9b8b;
+            --light-green: #f9e2cb;
+            --light-pink: #f6d2d0;
+            --dark-pink: #b1805d;
+            --bg-color: #ffffff;
+            --text-dark: #a2a08b;
+            --text-gray: #7a8b83;
+            --card-bg: #e0e1db;
+            --teal: #5BA8A0;
+            --light-teal: #E8F4F3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= Header ================= */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-green);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark-green);
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            color: var(--mid-green);
+        }
+
+        /* ================= Hero Section ================= */
+        .project-hero {
+            background: linear-gradient(135deg, #5BA8A0 0%, #7BC4BC 50%, #A8DDD8 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .project-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .project-hero .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .project-hero .tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .project-hero .tag {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            backdrop-filter: blur(10px);
+        }
+
+        /* ================= Content Sections ================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* ================= Guidebook Pages ================= */
+        .guidebook-pages {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .page-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .page-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .page-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .page-number {
+            text-align: center;
+            padding: 15px;
+            background: var(--light-teal);
+            color: var(--teal);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ================= Project Description ================= */
+        .project-description {
+            background: var(--light-teal);
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 50px;
+        }
+
+        .project-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--teal);
+            margin-bottom: 20px;
+        }
+
+        .project-description p {
+            color: var(--text-gray);
+            line-height: 1.9;
+            font-size: 1rem;
+        }
+
+        /* ================= Back to Top Button ================= */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--teal);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(91, 168, 160, 0.4);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: #4A968E;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(91, 168, 160, 0.5);
+        }
+
+        .back-to-top:active {
+            transform: translateY(-1px);
+        }
+
+        /* ================= Footer ================= */
+        footer {
+            background-color: var(--dark-green);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* ================= Responsive ================= */
+        @media (max-width: 768px) {
+            .project-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .project-description {
+                padding: 25px;
+            }
+
+            .section {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Xiaolin Fang
+        </a>
+        <a href="index.html#project" class="back-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Back to Projects
+        </a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="project-hero" data-aos="fade-down">
+        <h1>Culture Harmony Guidebook</h1>
+        <p class="subtitle">Cross-Cultural Communication Design Project</p>
+        <div class="tags">
+            <span class="tag">Adobe InDesign</span>
+            <span class="tag">Illustration</span>
+            <span class="tag">Content Strategy</span>
+            <span class="tag">Cross-Cultural Communication</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Project Description -->
+        <section class="section" data-aos="fade-up">
+            <div class="project-description">
+                <h3>About This Project</h3>
+                <p>A guidebook exploring the theme of cultural harmony, designed to promote understanding and dialogue between diverse cultural backgrounds. The content covers topics such as cultural symbols, festival traditions, and communication etiquette across different regions. Visual design incorporates a clean layout with hand-drawn illustrations, infographics, and bilingual text to enhance accessibility. The project aims to present complex cultural concepts in an approachable and visually engaging format, encouraging readers to reflect on inclusivity and mutual respect.</p>
+            </div>
+        </section>
+
+        <!-- Guidebook Pages -->
+        <section class="section">
+            <h2 class="section-title" data-aos="fade-up">Guidebook Pages</h2>
+            <div class="guidebook-pages">
+                <!-- Page 1 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_01.jpg" alt="Guidebook Page 1">
+                    <div class="page-number">Page 1</div>
+                </div>
+                <!-- Page 2 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_02.jpg" alt="Guidebook Page 2">
+                    <div class="page-number">Page 2</div>
+                </div>
+                <!-- Page 3 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_03.jpg" alt="Guidebook Page 3">
+                    <div class="page-number">Page 3</div>
+                </div>
+                <!-- Page 4 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_04.jpg" alt="Guidebook Page 4">
+                    <div class="page-number">Page 4</div>
+                </div>
+                <!-- Page 5 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_05.jpg" alt="Guidebook Page 5">
+                    <div class="page-number">Page 5</div>
+                </div>
+                <!-- Page 6 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_06.jpg" alt="Guidebook Page 6">
+                    <div class="page-number">Page 6</div>
+                </div>
+                <!-- Page 7 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_07.jpg" alt="Guidebook Page 7">
+                    <div class="page-number">Page 7</div>
+                </div>
+                <!-- Page 8 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_08.jpg" alt="Guidebook Page 8">
+                    <div class="page-number">Page 8</div>
+                </div>
+                <!-- Page 9 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_09.jpg" alt="Guidebook Page 9">
+                    <div class="page-number">Page 9</div>
+                </div>
+                <!-- Page 10 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_10.jpg" alt="Guidebook Page 10">
+                    <div class="page-number">Page 10</div>
+                </div>
+                <!-- Page 11 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_11.jpg" alt="Guidebook Page 11">
+                    <div class="page-number">Page 11</div>
+                </div>
+                <!-- Page 12 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_12.jpg" alt="Guidebook Page 12">
+                    <div class="page-number">Page 12</div>
+                </div>
+                <!-- Page 13 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_13.jpg" alt="Guidebook Page 13">
+                    <div class="page-number">Page 13</div>
+                </div>
+                <!-- Page 14 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_14.jpg" alt="Guidebook Page 14">
+                    <div class="page-number">Page 14</div>
+                </div>
+                <!-- Page 15 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_15.jpg" alt="Guidebook Page 15">
+                    <div class="page-number">Page 15</div>
+                </div>
+                <!-- Page 16 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_16.jpg" alt="Guidebook Page 16">
+                    <div class="page-number">Page 16</div>
+                </div>
+                <!-- Page 17 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_17.jpg" alt="Guidebook Page 17">
+                    <div class="page-number">Page 17</div>
+                </div>
+                <!-- Page 18 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_18.jpg" alt="Guidebook Page 18">
+                    <div class="page-number">Page 18</div>
+                </div>
+                <!-- Page 19 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_19.jpg" alt="Guidebook Page 19">
+                    <div class="page-number">Page 19</div>
+                </div>
+                <!-- Page 20 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_20.jpg" alt="Guidebook Page 20">
+                    <div class="page-number">Page 20</div>
+                </div>
+                <!-- Page 21 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_21.jpg" alt="Guidebook Page 21">
+                    <div class="page-number">Page 21</div>
+                </div>
+                <!-- Page 22 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_22.jpg" alt="Guidebook Page 22">
+                    <div class="page-number">Page 22</div>
+                </div>
+                <!-- Page 23 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_23.jpg" alt="Guidebook Page 23">
+                    <div class="page-number">Page 23</div>
+                </div>
+                <!-- Page 24 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_24.jpg" alt="Guidebook Page 24">
+                    <div class="page-number">Page 24</div>
+                </div>
+                <!-- Page 25 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_25.jpg" alt="Guidebook Page 25">
+                    <div class="page-number">Page 25</div>
+                </div>
+                <!-- Page 26 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_26.jpg" alt="Guidebook Page 26">
+                    <div class="page-number">Page 26</div>
+                </div>
+                <!-- Page 27 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_27.jpg" alt="Guidebook Page 27">
+                    <div class="page-number">Page 27</div>
+                </div>
+                <!-- Page 28 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_28.jpg" alt="Guidebook Page 28">
+                    <div class="page-number">Page 28</div>
+                </div>
+                <!-- Page 29 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_29.jpg" alt="Guidebook Page 29">
+                    <div class="page-number">Page 29</div>
+                </div>
+                <!-- Page 30 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_30.jpg" alt="Guidebook Page 30">
+                    <div class="page-number">Page 30</div>
+                </div>
+                <!-- Page 31 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_31.jpg" alt="Guidebook Page 31">
+                    <div class="page-number">Page 31</div>
+                </div>
+                <!-- Page 32 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_32.jpg" alt="Guidebook Page 32">
+                    <div class="page-number">Page 32</div>
+                </div>
+                <!-- Page 33 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_33.jpg" alt="Guidebook Page 33">
+                    <div class="page-number">Page 33</div>
+                </div>
+                <!-- Page 34 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_34.jpg" alt="Guidebook Page 34">
+                    <div class="page-number">Page 34</div>
+                </div>
+                <!-- Page 35 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_35.jpg" alt="Guidebook Page 35">
+                    <div class="page-number">Page 35</div>
+                </div>
+                <!-- Page 36 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_36.jpg" alt="Guidebook Page 36">
+                    <div class="page-number">Page 36</div>
+                </div>
+                <!-- Page 37 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_37.jpg" alt="Guidebook Page 37">
+                    <div class="page-number">Page 37</div>
+                </div>
+                <!-- Page 38 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_38.jpg" alt="Guidebook Page 38">
+                    <div class="page-number">Page 38</div>
+                </div>
+                <!-- Page 39 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_39.jpg" alt="Guidebook Page 39">
+                    <div class="page-number">Page 39</div>
+                </div>
+                <!-- Page 40 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_40.jpg" alt="Guidebook Page 40">
+                    <div class="page-number">Page 40</div>
+                </div>
+                <!-- Page 41 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_41.jpg" alt="Guidebook Page 41">
+                    <div class="page-number">Page 41</div>
+                </div>
+                <!-- Page 42 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_42.jpg" alt="Guidebook Page 42">
+                    <div class="page-number">Page 42</div>
+                </div>
+                <!-- Page 43 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_43.jpg" alt="Guidebook Page 43">
+                    <div class="page-number">Page 43</div>
+                </div>
+                <!-- Page 44 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_44.jpg" alt="Guidebook Page 44">
+                    <div class="page-number">Page 44</div>
+                </div>
+                <!-- Page 45 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_45.jpg" alt="Guidebook Page 45">
+                    <div class="page-number">Page 45</div>
+                </div>
+                <!-- Page 46 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_46.jpg" alt="Guidebook Page 46">
+                    <div class="page-number">Page 46</div>
+                </div>
+                <!-- Page 47 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_47.jpg" alt="Guidebook Page 47">
+                    <div class="page-number">Page 47</div>
+                </div>
+                <!-- Page 48 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_48.jpg" alt="Guidebook Page 48">
+                    <div class="page-number">Page 48</div>
+                </div>
+                <!-- Page 49 -->
+                <div class="page-item" data-aos="fade-up">
+                    <img src="images/work2/celine-fang-guidebook_49.jpg" alt="Guidebook Page 49">
+                    <div class="page-number">Page 49</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Xiaolin Fang. All rights reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Back to top button functionality
+        const backToTopBtn = document.getElementById('backToTop');
+
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll to top when button is clicked
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
